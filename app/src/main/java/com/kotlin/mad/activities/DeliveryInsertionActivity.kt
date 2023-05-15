@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.kotlin.mad.models.InquiryModel
+import com.kotlin.mad.models.DeliveryModel
 import com.kotlin.mad.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class InquiryInsertionActivity : AppCompatActivity() {
+class DeliveryInsertionActivity : AppCompatActivity() {
 
     //initializing variables
 
@@ -53,16 +53,16 @@ class InquiryInsertionActivity : AppCompatActivity() {
         if (cName.isEmpty() || cNumber.isEmpty() || cAddress.isEmpty() || cEmail.isEmpty()) {
 
             if (cName.isEmpty()) {
-                etCName.error = "Please enter Customer Name"
+                etCName.error = "Please Enter Customer Name"
             }
             if (cNumber.isEmpty()) {
-                etCNumber.error = "Please Customer Number"
+                etCNumber.error = "Please Enter Customer Number"
             }
             if (cAddress.isEmpty()) {
-                etCAddress.error = "Please Address"
+                etCAddress.error = "Please Enter Address"
             }
             if (cEmail.isEmpty()) {
-                etCEmail.error = "Please Email"
+                etCEmail.error = "Please Enter Email"
             }
             Toast.makeText(this, "please check Some areas are not filled", Toast.LENGTH_LONG).show()
         } else {
@@ -70,7 +70,7 @@ class InquiryInsertionActivity : AppCompatActivity() {
             //genrate unique ID
             val cId = dbRef.push().key!!
 
-            val bill = InquiryModel(cId, cName, cNumber, cAddress, cEmail)
+            val bill = DeliveryModel(cId, cName, cNumber, cAddress, cEmail)
 
             dbRef.child(cId).setValue(bill)
                 .addOnCompleteListener {
