@@ -16,8 +16,8 @@ class InquiryInsertionActivity : AppCompatActivity() {
 
     private lateinit var etCName: EditText
     private lateinit var etCNumber: EditText
-    private lateinit var etCType: EditText
-    private lateinit var etCInquiry: EditText
+    private lateinit var etCAddress: EditText
+    private lateinit var etCEmail: EditText
     private lateinit var btnSaveData: Button
 
     private lateinit var dbRef: DatabaseReference
@@ -29,28 +29,28 @@ class InquiryInsertionActivity : AppCompatActivity() {
 
         etCName = findViewById(R.id.etCName)
         etCNumber = findViewById(R.id.etCNumber)
-        etCType = findViewById(R.id.etCType)
-        etCInquiry = findViewById(R.id.etCInquiry)
+        etCAddress = findViewById(R.id.etCAddress)
+        etCEmail = findViewById(R.id.etCEmail)
         btnSaveData = findViewById(R.id.btnSave)
 
-        dbRef = FirebaseDatabase.getInstance().getReference("InquiryDB")
+        dbRef = FirebaseDatabase.getInstance().getReference("DeliveryDB")
 
         btnSaveData.setOnClickListener {
-            saveInquiryData()
+            saveDeliveryData()
         }
 
     }
 
-    private fun saveInquiryData() {
+    private fun saveDeliveryData() {
 
         //Geting Values
         val cName = etCName.text.toString()
         val cNumber = etCNumber.text.toString()
-        val cType = etCType.text.toString()
-        val cInquiry = etCInquiry.text.toString()
+        val cAddress = etCAddress.text.toString()
+        val cEmail = etCEmail.text.toString()
 
         //validation
-        if (cName.isEmpty() || cNumber.isEmpty() || cType.isEmpty() || cInquiry.isEmpty()) {
+        if (cName.isEmpty() || cNumber.isEmpty() || cAddress.isEmpty() || cEmail.isEmpty()) {
 
             if (cName.isEmpty()) {
                 etCName.error = "Please enter Customer Name"
@@ -58,11 +58,11 @@ class InquiryInsertionActivity : AppCompatActivity() {
             if (cNumber.isEmpty()) {
                 etCNumber.error = "Please Customer Number"
             }
-            if (cType.isEmpty()) {
-                etCType.error = "Please Inquiry Type"
+            if (cAddress.isEmpty()) {
+                etCAddress.error = "Please Address"
             }
-            if (cInquiry.isEmpty()) {
-                etCInquiry.error = "Please Inquiry Description"
+            if (cEmail.isEmpty()) {
+                etCEmail.error = "Please Email"
             }
             Toast.makeText(this, "please check Some areas are not filled", Toast.LENGTH_LONG).show()
         } else {
@@ -70,7 +70,7 @@ class InquiryInsertionActivity : AppCompatActivity() {
             //genrate unique ID
             val cId = dbRef.push().key!!
 
-            val bill = InquiryModel(cId, cName, cNumber, cType, cInquiry)
+            val bill = InquiryModel(cId, cName, cNumber, cAddress, cEmail)
 
             dbRef.child(cId).setValue(bill)
                 .addOnCompleteListener {
@@ -79,8 +79,8 @@ class InquiryInsertionActivity : AppCompatActivity() {
                     //clear data after insert
                     etCName.text.clear()
                     etCNumber.text.clear()
-                    etCType.text.clear()
-                    etCInquiry.text.clear()
+                    etCAddress.text.clear()
+                    etCEmail.text.clear()
 
 
                 }.addOnFailureListener { err ->

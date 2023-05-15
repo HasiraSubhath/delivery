@@ -17,8 +17,8 @@ class InquiryDetailsActivity : AppCompatActivity() {
     private lateinit var tvCId: TextView
     private lateinit var tvCName: TextView
     private lateinit var tvCNumber: TextView
-    private lateinit var tvCType: TextView
-    private lateinit var tvCInquiry: TextView
+    private lateinit var tvCAddress: TextView
+    private lateinit var tvCEmail: TextView
 
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
@@ -49,7 +49,7 @@ class InquiryDetailsActivity : AppCompatActivity() {
     private fun deleteRecord(
         id: String
     ){
-        val dbRef = FirebaseDatabase.getInstance().getReference("InquiryDB").child(id)
+        val dbRef = FirebaseDatabase.getInstance().getReference("DeliveryDB").child(id)
         val mTask = dbRef.removeValue()
 
         mTask.addOnSuccessListener {
@@ -65,14 +65,14 @@ class InquiryDetailsActivity : AppCompatActivity() {
 
 
 
-//chack
+
 
     private fun initView() {
         tvCId = findViewById(R.id.tvCId)
         tvCName = findViewById(R.id.tvCName)
         tvCNumber = findViewById(R.id.tvCNumber)
-        tvCType = findViewById(R.id.tvCType)
-        tvCInquiry = findViewById(R.id.tvCInquiry)
+        tvCAddress = findViewById(R.id.tvCAddress)
+        tvCEmail = findViewById(R.id.tvCEmail)
 
         btnUpdate = findViewById(R.id.btnUpdate)
         btnDelete = findViewById(R.id.btnDelete)
@@ -83,8 +83,8 @@ class InquiryDetailsActivity : AppCompatActivity() {
         tvCId.text = intent.getStringExtra("cId")
         tvCName.text = intent.getStringExtra("cName")
         tvCNumber.text = intent.getStringExtra("cNumber")
-        tvCType.text = intent.getStringExtra("cType")
-        tvCInquiry.text = intent.getStringExtra("cInquiry")
+        tvCAddress.text = intent.getStringExtra("cAddress")
+        tvCEmail.text = intent.getStringExtra("cEmail")
 
     }
 
@@ -101,16 +101,16 @@ class InquiryDetailsActivity : AppCompatActivity() {
 
         val etCName = mDialogView.findViewById<EditText>(R.id.etCName)
         val etCNumber = mDialogView.findViewById<EditText>(R.id.etCNumber)
-        val etCType = mDialogView.findViewById<EditText>(R.id.etCType)
-        val etCInquiry = mDialogView.findViewById<EditText>(R.id.etCInquiry)
+        val etCAddress = mDialogView.findViewById<EditText>(R.id.etCAddress)
+        val etCEmail = mDialogView.findViewById<EditText>(R.id.etCEmail)
 
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
         //update
         etCName.setText(intent.getStringExtra("cName").toString())
         etCNumber.setText(intent.getStringExtra("cNumber").toString())
-        etCType.setText(intent.getStringExtra("cType").toString())
-        etCInquiry.setText(intent.getStringExtra("cInquiry").toString())
+        etCAddress.setText(intent.getStringExtra("cAddress").toString())
+        etCEmail.setText(intent.getStringExtra("cEmail").toString())
 
         mDialog.setTitle("Updating $cName Record")
 
@@ -118,12 +118,12 @@ class InquiryDetailsActivity : AppCompatActivity() {
         alertDialog.show()
 
         btnUpdateData.setOnClickListener {
-            updateInquiryData(
+            updateDeliveryData(
                 cId,
                 etCName.text.toString(),
                 etCNumber.text.toString(),
-                etCType.text.toString(),
-                etCInquiry.text.toString()
+                etCAddress.text.toString(),
+                etCEmail.text.toString()
 
             )
 
@@ -132,8 +132,8 @@ class InquiryDetailsActivity : AppCompatActivity() {
             //we are setting updated data to our text views
             tvCName.text = etCName.text.toString()
             tvCNumber.text = etCNumber.text.toString()
-            tvCType.text = etCType.text.toString()
-            tvCInquiry.text = etCInquiry.text.toString()
+            tvCAddress.text = etCAddress.text.toString()
+            tvCEmail.text = etCEmail.text.toString()
 
             alertDialog.dismiss()
 
@@ -141,15 +141,15 @@ class InquiryDetailsActivity : AppCompatActivity() {
 
     }
 
-    private fun updateInquiryData(
+    private fun updateDeliveryData(
         id: String,
         name: String,
         number: String,
-        type: String,
-        inquiry: String
+        address: String,
+        email: String
     ){
-        val dbRef = FirebaseDatabase.getInstance().getReference("InquiryDB").child(id)
-        val inquiryInfo = InquiryModel(id, name, number, type, inquiry)
-        dbRef.setValue(inquiryInfo)
+        val dbRef = FirebaseDatabase.getInstance().getReference("DeliveryDB").child(id)
+        val deliveryInfo = InquiryModel(id, name, number, address, email)
+        dbRef.setValue(deliveryInfo)
     }
 }

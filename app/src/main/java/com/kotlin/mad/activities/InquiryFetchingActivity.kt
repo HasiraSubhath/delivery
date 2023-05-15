@@ -31,17 +31,17 @@ class InquiryFetchingActivity : AppCompatActivity() {
 
         billList = arrayListOf<InquiryModel>()
 
-        getInquiryData()
+        getDeliveryData()
 
 
     }
 
-    private fun getInquiryData() {
+    private fun getDeliveryData() {
 
         empRecyclerView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        dbRef = FirebaseDatabase.getInstance().getReference("InquiryDB")
+        dbRef = FirebaseDatabase.getInstance().getReference("DeliveryDB")
 
         dbRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -63,8 +63,8 @@ class InquiryFetchingActivity : AppCompatActivity() {
                             intent.putExtra("cId", billList[position].cId)
                             intent.putExtra("cName", billList[position].cName)
                             intent.putExtra("cNumber", billList[position].cNumber)
-                            intent.putExtra("cType", billList[position].cType)
-                            intent.putExtra("cInquiry", billList[position].cInquiry)
+                            intent.putExtra("cAddress", billList[position].cAddress)
+                            intent.putExtra("cEmail", billList[position].cEmail)
                             startActivity(intent)
                         }
 
