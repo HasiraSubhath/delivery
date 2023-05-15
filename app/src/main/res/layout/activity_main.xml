@@ -10,12 +10,10 @@
         android:id="@+id/imageView4"
         android:layout_width="525dp"
         android:layout_height="261dp"
-        android:layout_marginBottom="276dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnInsertData"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/top_signup" />
+        android:visibility="invisible"
+        app:srcCompat="@drawable/top_signup"
+        tools:layout_editor_absoluteX="-31dp"
+        tools:layout_editor_absoluteY="-128dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -71,7 +69,7 @@
         android:layout_marginBottom="96dp"
         android:backgroundTint="@color/Darkgreen"
         android:fontFamily="@font/tomorrow_medium"
-        android:text="View All"
+        android:text="Recent Delivery"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

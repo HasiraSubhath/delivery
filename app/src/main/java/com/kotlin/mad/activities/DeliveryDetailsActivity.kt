@@ -9,10 +9,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.kotlin.mad.R
-import com.kotlin.mad.models.InquiryModel
+import com.kotlin.mad.models.DeliveryModel
 import com.google.firebase.database.FirebaseDatabase
 
-class InquiryDetailsActivity : AppCompatActivity() {
+class DeliveryDetailsActivity : AppCompatActivity() {
 
     private lateinit var tvCId: TextView
     private lateinit var tvCName: TextView
@@ -26,7 +26,7 @@ class InquiryDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_inquiry_details)
+        setContentView(R.layout.activity_delivery_details)
 
         initView()
         setValuesToViews()
@@ -55,7 +55,7 @@ class InquiryDetailsActivity : AppCompatActivity() {
         mTask.addOnSuccessListener {
             Toast.makeText(this, " data deleted", Toast.LENGTH_LONG).show()
 
-            val intent = Intent(this, InquiryFetchingActivity::class.java)
+            val intent = Intent(this, DeliveryFetchingActivity::class.java)
             finish()
             startActivity(intent)
         }.addOnFailureListener{ error ->
@@ -149,7 +149,7 @@ class InquiryDetailsActivity : AppCompatActivity() {
         email: String
     ){
         val dbRef = FirebaseDatabase.getInstance().getReference("DeliveryDB").child(id)
-        val deliveryInfo = InquiryModel(id, name, number, address, email)
+        val deliveryInfo = DeliveryModel(id, name, number, address, email)
         dbRef.setValue(deliveryInfo)
     }
 }

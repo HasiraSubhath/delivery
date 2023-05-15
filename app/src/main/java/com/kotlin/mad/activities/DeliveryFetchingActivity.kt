@@ -7,16 +7,16 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.kotlin.mad.adapters.InquiryAdapter
-import com.kotlin.mad.models.InquiryModel
+import com.kotlin.mad.adapters.DeliveryAdapter
+import com.kotlin.mad.models.DeliveryModel
 import com.kotlin.mad.R
 import com.google.firebase.database.*
 
-class InquiryFetchingActivity : AppCompatActivity() {
+class DeliveryFetchingActivity : AppCompatActivity() {
 
     private lateinit var empRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
-    private lateinit var billList: ArrayList<InquiryModel>
+    private lateinit var billList: ArrayList<DeliveryModel>
     private lateinit var dbRef: DatabaseReference
 
 
@@ -29,7 +29,7 @@ class InquiryFetchingActivity : AppCompatActivity() {
         empRecyclerView.setHasFixedSize(true)
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
-        billList = arrayListOf<InquiryModel>()
+        billList = arrayListOf<DeliveryModel>()
 
         getDeliveryData()
 
@@ -48,16 +48,16 @@ class InquiryFetchingActivity : AppCompatActivity() {
                billList.clear()
                 if (snapshot.exists()){
                     for (empSnap in snapshot.children){
-                        val billData = empSnap.getValue(InquiryModel::class.java)
+                        val billData = empSnap.getValue(DeliveryModel::class.java)
                         billList.add(billData!!)
                     }
-                    val mAdapter = InquiryAdapter(billList)
+                    val mAdapter = DeliveryAdapter(billList)
                     empRecyclerView.adapter = mAdapter
 
-                    mAdapter.setOnItemClickListener(object : InquiryAdapter.onItemClickListener{
+                    mAdapter.setOnItemClickListener(object : DeliveryAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
 
-                            val intent = Intent(this@InquiryFetchingActivity, InquiryDetailsActivity::class.java)
+                            val intent = Intent(this@DeliveryFetchingActivity, DeliveryDetailsActivity::class.java)
 
                             //put extra(passing data to another activity)
                             intent.putExtra("cId", billList[position].cId)
