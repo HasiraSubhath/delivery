@@ -7,17 +7,6 @@
 
     tools:context=".activities.InquiryInsertionActivity">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="475dp"
-        android:layout_height="639dp"
-        android:layout_marginBottom="264dp"
-        android:src="@drawable/iq"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.218"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="179dp"
@@ -27,12 +16,12 @@
         android:layout_marginEnd="52dp"
         android:fontFamily="@font/tomorrow_medium"
         android:gravity="center"
-        android:text="Add Inquiry"
+        android:text="Deliveries"
         android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -58,7 +47,7 @@
         android:layout_marginTop="38dp"
         android:ems="10"
         android:fontFamily="@font/tomorrow_medium"
-        android:hint="Enter Your Contact Number"
+        android:hint="Enter Your Address"
         android:inputType="number"
         android:maxLength="10"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +62,7 @@
         android:layout_marginTop="38dp"
         android:ems="10"
         android:fontFamily="@font/tomorrow_medium"
-        android:hint="Mention Your Inquiry Type"
+        android:hint="Enter your E-mail"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -88,7 +77,7 @@
         android:layout_marginBottom="11dp"
         android:ems="10"
         android:fontFamily="@font/tomorrow_medium"
-        android:hint="Description"
+        android:hint="Contact Number"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/btnSave"
         app:layout_constraintEnd_toEndOf="parent"
