@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="E-mail"
+        android:hint="Address"
         android:fontFamily="@font/tomorrow_medium"
         android:inputType="textPersonName" />
 
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Address"
+        android:hint="Email"
         android:fontFamily="@font/tomorrow_medium"
 
         android:inputType="textPersonName"
