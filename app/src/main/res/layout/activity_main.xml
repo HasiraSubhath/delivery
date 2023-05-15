@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity" >
+    tools:context=".activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -22,10 +22,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="204dp"
+        android:fontFamily="@font/tomorrow_medium"
         android:gravity="center"
         android:text="deliveries"
         android:textAllCaps="true"
-        android:fontFamily="@font/tomorrow_medium"
         android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -33,6 +33,18 @@
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/del" />
 
     <Button
         android:id="@+id/btnInsertData"
@@ -42,8 +54,8 @@
         android:layout_marginTop="292dp"
         android:layout_marginEnd="144dp"
         android:backgroundTint="@color/Darkgreen"
-        android:text="Add New"
         android:fontFamily="@font/tomorrow_medium"
+        android:text="Add New"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,8 +70,8 @@
         android:layout_marginEnd="144dp"
         android:layout_marginBottom="96dp"
         android:backgroundTint="@color/Darkgreen"
-        android:text="View All"
         android:fontFamily="@font/tomorrow_medium"
+        android:text="View All"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
